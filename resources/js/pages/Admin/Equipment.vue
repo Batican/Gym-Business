@@ -86,6 +86,7 @@
             value: 'id',
           },
           { text: "Name", value: "name", align: 'center', },
+          { text: "Description", value: "description", align: 'center', },
           { text: "Date for Checking", value: "date_for_checking", align: 'center', },
           { text: "Actions", value: "actions", sortable: false, align: 'center', },
         ],
@@ -95,6 +96,7 @@
             name: '',
             description: '',
             date_for_checking: '',
+            url: '',
           // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
         }
       };
@@ -122,6 +124,7 @@
             name: '',
             description: '',
             date_for_checking: '',
+            url: '',
           // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
         }
         this.loading = true;
@@ -137,6 +140,7 @@
         name: '',
         description: '',
         date_for_checking: '',
+        url: '',
         // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
       }
       this.addition_edition_dailog = true
@@ -147,7 +151,7 @@
         name:  equipment.name ,
         description:  equipment.description ,
         date_for_checking:  equipment.date_for_checking ,
-       
+        url:  equipment.url ,
         // image: '/storage/'+product.image 
       }
       this.addition_edition_dailog = true

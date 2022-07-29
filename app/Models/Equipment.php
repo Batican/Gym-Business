@@ -13,6 +13,7 @@ class Equipment extends Model
         'name',
         'description',
         'date_for_checking',
+        'url',
         'qr_value',
 
        

@@ -5,9 +5,9 @@
             outlined
         >
             <v-card-text>
-                <v-row>
+                <v-row> 
                     <v-col cols=4>
-                        <v-card elevation="3" @click="goTo('/teachers')">
+                        <v-card elevation="3" @click="goTo('/employees')">
                             <v-card-text>
                                 <div class="d-flex justify-space-between mx-2">
                                     <div >
@@ -165,13 +165,32 @@ export default {
                 height: 350,
                 zoom: {
                     enabled: false
-                }
+                },
+                dropShadow: {
+                enabled: true,
+                color: '#000',
+                top: 18,
+                left: 7,
+                blur: 10,
+                opacity: 0.2
+              },
             },
+            colors: ['#0d6efd'],
             dataLabels: {
-                enabled: false
+                enabled: true
             },
               stroke: {
                 curve: "smooth"
+            },
+            grid: {
+              borderColor: '#e7e7e7',
+              row: {
+                colors: ['gray', 'transparent'], // takes an array which will be repeated on columns
+                opacity: 0.5
+                },
+            },
+            markers: {
+              size: 1
             },
             xaxis: {
                 categories: [
@@ -187,7 +206,15 @@ export default {
                     'Oct',
                     'Nov',
                     'Dec',
-                ]
+                ],
+                title: {
+                text: 'Month'
+              }
+            },
+            yaxis: {
+              title: {
+                text: 'Sales'
+              },
             },
             
       },

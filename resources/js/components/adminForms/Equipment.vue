@@ -57,7 +57,12 @@
                                 v-model="form.date_for_checking"
                                 @input="date_pick = false"
                               ></v-date-picker>
-                            </v-menu>  
+                            </v-menu>
+                            <v-text-field
+                                label="*URL"
+                                required
+                                v-model="form.url"
+                            ></v-text-field>   
                             <p>*indicates required field</p>
 
                         </v-col>
@@ -104,6 +109,7 @@
                 name: '',
                 description: '',
                 date_for_checking: '',
+                url: '',
                 // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
             }
         }

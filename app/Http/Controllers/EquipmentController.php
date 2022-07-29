@@ -30,6 +30,8 @@ class EquipmentController extends Controller
             'name'=>'required',
             'description'=>'required',
             'date_for_checking'=>'required',
+            'url'=>'required',
+
             
 
         ]);
@@ -38,6 +40,7 @@ class EquipmentController extends Controller
             'name'=> $request->name,
             'description'=> $request->description,
             'date_for_checking'=> $request->date_for_checking,
+            'url'=> $request->url,
 
         ]);
 
@@ -48,7 +51,7 @@ class EquipmentController extends Controller
     {
         $equipment = Equipment::findOrFail($id);
         $qrcode = \QrCode::size(200)
-                ->generate($equipment->id.'_'.$equipment->name);
+                ->generate($equipment->url);
 
         $img_value = $equipment->id.'_'.$equipment->name;
 
@@ -71,6 +74,8 @@ class EquipmentController extends Controller
             'name'=>'required',
             'description'=>'required',
             'date_for_checking'=>'required',
+            'url'=>'required',
+
         ]);
 
         $equipment = Equipment::find($id);
@@ -79,6 +84,8 @@ class EquipmentController extends Controller
             'name'=> $request->name,
             'description'=> $request->description,
             'date_for_checking'=> $request->date_for_checking,
+            'url'=> $request->url,
+
         ];
 
       
