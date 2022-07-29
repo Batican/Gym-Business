@@ -28,7 +28,7 @@
                         </v-card>
                     </v-col>
                     <v-col cols=4>
-                        <v-card elevation="3" @click="goTo('/students')">
+                        <v-card elevation="3" @click="goTo('/customers')">
                             <v-card-text>
                                 <div class="d-flex justify-space-between mx-2">
                                     <div >
@@ -49,7 +49,7 @@
                         </v-card>
                     </v-col>
                     <v-col cols=4>
-                        <v-card elevation="3" @click="goTo('/class-details')">
+                        <v-card elevation="3" @click="goTo('/equipments')">
                             <v-card-text>
                                 <div class="d-flex justify-space-between mx-2">
                                     <div >
@@ -278,10 +278,14 @@ export default {
                     
 
             })
-      }
+        },
 
+        goTo(path) {
+            this.$router.push(path)
+        }
 
     },
+  
 
 };
 </script>

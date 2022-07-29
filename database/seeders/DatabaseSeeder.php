@@ -23,7 +23,12 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
-            'name' => 'admin 1',
+            'firstname' => 'John',
+            'lastname' => 'Doe',
+            'phone_number' => '09123123123',
+            'gender' => 'Male',
+            'age' => 30,
+            'type' => 1,
             'email' => 'admin@lang.com',
             'password' => bcrypt(123123),
         ]);

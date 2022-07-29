@@ -21,9 +21,33 @@
                     <v-row>
                         <v-col>
                             <v-text-field
-                                label="*Name"
+                                label="*First Name"
                                 required
-                                v-model="form.name"
+                                v-model="form.firstname"
+                            ></v-text-field> 
+                            <v-text-field
+                                label="*Last Name"
+                                required
+                                v-model="form.lastname"
+                            ></v-text-field>
+                            <v-text-field
+                                label="*Phone Number"
+                                required
+                                v-model="form.phone_number"
+                                type="number"
+                            ></v-text-field>
+                            <v-select
+                              :items="['Male', 'Female']"
+                              label="*Gender"
+                              v-model="form.gender"
+                              
+                            >
+                            </v-select>
+                             <v-text-field
+                                label="*Age"
+                                required
+                                v-model="form.age"
+                                type="number"
                             ></v-text-field>
                             <v-text-field
                                 label="*Email"
@@ -82,9 +106,13 @@
             required: true,
             default: {
                 id:null,
-                name:'',
-                email:'',
-                password:'',
+                firstname: '',
+                lastname: '',
+                phone_number: '',
+                gender: '',
+                age: '',
+                email: '',
+                password: '',
                 // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
             }
         }

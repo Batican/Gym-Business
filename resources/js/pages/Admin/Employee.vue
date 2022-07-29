@@ -81,6 +81,7 @@
           age: '',
           email: '',
           password: '',
+          type:2,
           // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
         }
       };
@@ -112,10 +113,11 @@
           age: '',
           email: '',
           password: '',
+          type:2,
           // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
         }
         this.loading = true;
-        this.$admin.get('api/employee/index').then(({data}) => {
+        this.$admin.get('api/user/employeeIndex').then(({data}) => {
             //Then injecting the result to datatable parameters.
             this.loading = false;
             this.employees = data;
@@ -131,6 +133,7 @@
         age: '',
         email: '',
         password: '',
+        type:2,
         // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
       }
       this.addition_edition_dailog = true
@@ -144,6 +147,7 @@
         gender:  employee.gender ,
         age:  employee.age ,
         email:  employee.email ,
+        type:2,
         // image: '/storage/'+product.image 
       }
       this.addition_edition_dailog = true
@@ -151,13 +155,13 @@
     saveEmployee(){
       // return;
       if(this.employeeForm.id){
-        this.$admin.post('api/employee/update/'+this.employeeForm.id,this.employeeForm).then(({data}) => {
+        this.$admin.post('api/user/update/'+this.employeeForm.id,this.employeeForm).then(({data}) => {
           this.initialize()
           this.successNotify('Updated Employee');
         })
       }
       else{
-        this.$admin.post('api/employee/create',this.employeeForm).then(({data}) =>{
+        this.$admin.post('api/user/create',this.employeeForm).then(({data}) =>{
           this.initialize()
           this.successNotify('Created Employee');
         })
@@ -166,7 +170,7 @@
     async deleteEmployee(employee){
       let confirm = await this.deleteRecord(employee.firstname);
 
-      this.$admin.delete('api/employee/delete/'+ employee.id).then(({data}) => {
+      this.$admin.delete('api/user/delete/'+ employee.id).then(({data}) => {
         if(data.error){
           this.errorNotify(data.error)
           return

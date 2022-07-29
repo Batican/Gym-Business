@@ -7,68 +7,94 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index()
+    public function adminIndex()
     {
-        $admins = User::all();
+        $admins = User::where('type', User::Admin)->get();
 
         return $admins;
+    }
+
+    public function employeeIndex()
+    {
+        $employees = User::where('type', User::Employee)->get();
+
+        return $employees;
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required',
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'phone_number'=>'required',
+            'gender'=>'required',
+            'age'=>'required',
             'email'=>'required|email',
             'password'=>'required',
+            'type' =>'required'
 
         ]);
 
-        $admin = User::create([
-            'name'=> $request->name,
+        $user = User::create([
+            'firstname'=> $request->firstname,
+            'lastname'=> $request->lastname,
+            'phone_number'=> $request->phone_number,
+            'gender'=> $request->gender,
+            'age'=> $request->age,
             'email'=> $request->email,
             'password'=> bcrypt($request->password),
+            'type'=> $request->type,
 
 
         ]);
 
-        return $admin;
+        return $user;
     }
 
     public function show($id)
     {
-        $admin = User::find($id);
+        $user = User::find($id);
 
-        return $admin;
+        return $user;
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name'=>'required',
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'phone_number'=>'required',
+            'gender'=>'required',
+            'age'=>'required',
             'email'=>'required|email',
         ]);
 
-        $admin = User::find($id);
+        $user = User::find($id);
 
-        $adminUpdate = [
-            'name'=> $request->name,
+        $userUpdate = [
+            'firstname'=> $request->firstname,
+            'lastname'=> $request->lastname,
+            'phone_number'=> $request->phone_number,
+            'gender'=> $request->gender,
+            'age'=> $request->age,
             'email'=> $request->email,
+            'type'=> $request->type,
         ];
 
         if($request->password){
-            $adminUpdate["password"] = bcrypt($request->password);
+            $userUpdate["password"] = bcrypt($request->password);
         }
 
-        $admin->update($adminUpdate);
+        $user->update($userUpdate);
 
         return "Success";
     }
 
-    public function destroy(User $admin)
+    public function destroy(User $user)
     {
         
-        $admin->delete();
+        $user->delete();
 
-        return $admin;
+        return $user;
     }
 }

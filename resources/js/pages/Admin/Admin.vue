@@ -21,6 +21,10 @@
         :loading="loading"
         class="elevation-1"
       >
+         <template v-slot:item.name="{item}">
+          {{item.firstname}} {{item.lastname}}
+        </template>
+
         <template v-slot:item.actions="{item}">
           <v-icon
             class="mr-2"
@@ -61,15 +65,23 @@
             value: 'id',
           },
           { text: "Name", value: "name", align: 'center', },
+          { text: "Phone Number", value: "phone_number", align: 'center', },
+          { text: "Gender", value: "gender", align: 'center', },
+          { text: "Age", value: "age", align: 'center', },
           { text: "Email", value: "email", align: 'center', },
           { text: "Actions", value: "actions", sortable: false, align: 'center', },
         ],
         addition_edition_dailog: false,
         adminForm: {
           id:null,
-          name: '',
+          firstname: '',
+          lastname: '',
+          phone_number: '',
+          gender: '',
+          age: '',
           email: '',
           password: '',
+          type:1,
           // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
         }
       };
@@ -94,13 +106,18 @@
     initialize() {
         this.adminForm = {
           id:null,
-          name: '',
+          firstname: '',
+          lastname: '',
+          phone_number: '',
+          gender: '',
+          age: '',
           email: '',
           password: '',
+          type:1,
           // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
         }
         this.loading = true;
-        this.$admin.get('api/admin/index').then(({data}) => {
+        this.$admin.get('api/user/adminIndex').then(({data}) => {
             //Then injecting the result to datatable parameters.
             this.loading = false;
             this.admins = data;
@@ -108,10 +125,15 @@
     },
     addAdmin(){
       this.adminForm = {
-        id:null,
-        name: '',
-        email: '',
-        password: '',
+          id:null,
+          firstname: '',
+          lastname: '',
+          phone_number: '',
+          gender: '',
+          age: '',
+          email: '',
+          password: '',
+          type:1,
         // image: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconfinder.com%2Ficons%2F2180657%2Fadd_add_photo_upload_plus_icon&psig=AOvVaw2bCaC6AsrefFBHZ3Id8IAP&ust=1632066273765000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIC3-ejuiPMCFQAAAAAdAAAAABAD',
       }
       this.addition_edition_dailog = true
@@ -119,8 +141,13 @@
     editAdmin(admin){
       this.adminForm = {
         id: admin.id,
-        name:  admin.name ,
+        firstname:  admin.firstname ,
+        lastname:  admin.lastname ,
+        phone_number:  admin.phone_number ,
+        gender:  admin.gender ,
+        age:  admin.age ,
         email:  admin.email ,
+        type:1,
         // image: '/storage/'+product.image 
       }
       this.addition_edition_dailog = true
@@ -129,13 +156,13 @@
       // console.log(this.adminForm)
       // return;
       if(this.adminForm.id){
-        this.$admin.post('api/admin/update/'+this.adminForm.id,this.adminForm).then(({data}) => {
+        this.$admin.post('api/user/update/'+this.adminForm.id,this.adminForm).then(({data}) => {
           this.initialize()
           this.successNotify('Updated Admin');
         })
       }
       else{
-        this.$admin.post('api/admin/create',this.adminForm).then(({data}) =>{
+        this.$admin.post('api/user/create',this.adminForm).then(({data}) =>{
           this.initialize()
           this.successNotify('Created Admin');
         })
@@ -148,7 +175,7 @@
         this.errorNotify(data.error)
         return
       }
-      this.$admin.delete('api/admin/delete/'+ admin.id).then(({data}) => {
+      this.$admin.delete('api/user/delete/'+ admin.id).then(({data}) => {
         this.initialize() 
         this.successNotify('Deleted Admin');
       })

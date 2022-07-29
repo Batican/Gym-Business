@@ -6,6 +6,7 @@ use App\Models\Customer;
 use App\Models\Employee;
 use App\Models\Equipment;
 use App\Models\Payment;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class DashboardController extends Controller
 {
     public function getData(){
 
-        $employees = Employee::all()->count();
+        $employees = User::where('type', User::Employee)->count();
         $customers = Customer::all()->count();
         $equipments = Equipment::all()->count();
 

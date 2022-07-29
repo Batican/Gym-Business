@@ -3,7 +3,6 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\PaymentController;
@@ -35,17 +34,12 @@ Route::group(['middleware' => ['auth:user-api'] ], function () {
 
 
 
-        Route::get('admin/index',[UserController::class, 'index']);
-        Route::post('admin/create',[UserController::class, 'store']);
-        Route::get('admin/show/{id}',[UserController::class, 'show']);
-        Route::post('admin/update/{id}',[UserController::class, 'update']);
-        Route::delete('admin/delete/{admin}',[UserController::class, 'destroy']);
-        
-        Route::get('employee/index',[EmployeeController::class, 'index']);
-        Route::post('employee/create',[EmployeeController::class, 'store']);
-        Route::get('employee/show/{id}',[EmployeeController::class, 'show']);
-        Route::post('employee/update/{id}',[EmployeeController::class, 'update']);
-        Route::delete('employee/delete/{employee}',[EmployeeController::class, 'destroy']);
+        Route::get('user/adminIndex',[UserController::class, 'adminIndex']);
+        Route::get('user/employeeIndex',[UserController::class, 'employeeIndex']);
+        Route::post('user/create',[UserController::class, 'store']);
+        Route::get('user/show/{id}',[UserController::class, 'show']);
+        Route::post('user/update/{id}',[UserController::class, 'update']);
+        Route::delete('user/delete/{admin}',[UserController::class, 'destroy']);
         
         Route::get('customer/index',[CustomerController::class, 'index']);
         Route::post('customer/create',[CustomerController::class, 'store']);
