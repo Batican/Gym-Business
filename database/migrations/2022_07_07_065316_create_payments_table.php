@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('payment_for'); 
             $table->integer('amount');
-            $table->string('date'); 
+            $table->date('date'); 
             $table->unsignedInteger('customer_id');
             $table->foreign('customer_id')
                 ->references('id')

@@ -34,16 +34,20 @@
                                 label="*Phone Number"
                                 required
                                 v-model="form.phone_number"
+                                type="number"
                             ></v-text-field>
-                            <v-text-field
-                                label="*Gender"
-                                required
-                                v-model="form.gender"
-                            ></v-text-field>
+                            <v-select
+                              :items="['Male', 'Female']"
+                              label="*Gender"
+                              v-model="form.gender"
+                              
+                            >
+                            </v-select>
                              <v-text-field
                                 label="*Age"
                                 required
                                 v-model="form.age"
+                                type="number"
                             ></v-text-field>
                             <v-text-field
                                 label="*Email"

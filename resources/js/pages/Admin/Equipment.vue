@@ -22,9 +22,12 @@
         class="elevation-1"
       >
         <template v-slot:item.actions="{item}">
-          <v-btn class="mr-2" x-small color="success" @click="showDialog = true, generate(item)">
-            View QR
-          </v-btn>
+          <v-icon
+            class="mr-2"
+            @click="showDialog = true, generate(item)"
+          >
+            mdi-qrcode-scan
+          </v-icon>
           <v-icon
             class="mr-2"
             @click="editEquipment(item)"

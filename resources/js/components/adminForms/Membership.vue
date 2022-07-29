@@ -29,6 +29,7 @@
                                 label="*Membership Fee (Per Day)"
                                 required
                                 v-model="form.fee"
+                                type="number"
                             ></v-text-field> 
                             <p>*indicates required field</p>
 

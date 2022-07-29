@@ -49,16 +49,10 @@
                                 v-model="form.name"
 
                             >
-                                <!-- <template v-slot:item ="{item}">
-                                    {{item.name}} 
-                                </template>
-                                <template v-slot:selection ="{item}">
-                                    {{item.name}} 
-                                </template> -->
                             </v-autocomplete>
 
                             <v-text-field
-                                label="Subscription Fee" 
+                                label="Subscription Fee (Per Day)" 
                                 required
                                 v-model="form.subscription_fee"
                                 disabled

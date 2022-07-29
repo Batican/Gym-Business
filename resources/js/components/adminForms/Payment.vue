@@ -36,15 +36,18 @@
                                     {{item.firstname}} {{item.lastname}}
                                 </template>
                             </v-autocomplete>
-                            <v-text-field
-                                label="*Payment For"
-                                required
-                                v-model="form.payment_for"
-                            ></v-text-field>
+                            <v-select
+                              :items="['Subscription', 'Equipment']"
+                              label="*Payment For"
+                              v-model="form.payment_for"
+                              
+                            >
+                            </v-select>
                             <v-text-field
                                 label="*Amount" 
                                 required
                                 v-model="form.amount"
+                                type="number"
                             ></v-text-field>
                             <v-menu
                               v-model="date_pick"

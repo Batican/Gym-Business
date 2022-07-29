@@ -20,8 +20,8 @@ return new class extends Migration
                 ->references('id')
                 ->on('memberships')
                 ->onDelete('cascade'); 
-            $table->string('start_date'); 
-            $table->string('end_date'); 
+            $table->date('start_date'); 
+            $table->date('end_date'); 
             $table->integer('status'); 
             $table->integer('total')->nullable(); 
             $table->unsignedInteger('customer_id');

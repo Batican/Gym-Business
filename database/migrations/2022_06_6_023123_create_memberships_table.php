@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('memberships', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('fee');
+            $table->integer('fee');
             $table->timestamps();
         });
     }
